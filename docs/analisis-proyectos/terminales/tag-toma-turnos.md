@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Toma de turnos (TAG)'
+sidebar_label: 'Toma de turnos'
 ---
 
 # Toma de turnos desde Terminales
