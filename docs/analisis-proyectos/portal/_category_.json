@@ -1,0 +1,8 @@
+{
+  "label": "Portal",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Definiciones del portal de pacientes y proyectos individuales que son parte de este."
+  }
+}

@@ -1,5 +1,5 @@
 ---
-sidebar_label: 'Asistencia (subida de orden)'
+sidebar_label: 'Asistencia'
 ---
 
 # Asistencia en orden subida desde portal
