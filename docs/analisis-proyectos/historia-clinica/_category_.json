@@ -1,0 +1,8 @@
+{
+  "label": "Historia Clínica",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Definiciones de proyectos que pertenecen al universo de Historia Clínica."
+  }
+}

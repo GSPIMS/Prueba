@@ -1,0 +1,8 @@
+{
+  "label": "Aplicación",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Definición de funcionamiento de todas las aplicaciones desarrolladas y sus mejoras"
+  }
+}
