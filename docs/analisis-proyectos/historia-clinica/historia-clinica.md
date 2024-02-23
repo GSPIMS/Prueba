@@ -36,13 +36,13 @@ Pantalla de armado de query para poder buscar pacientes con X diagnósticos, con
 Orden digital de laboratorio:
 La orden digital de laboratorio es la orden que se hace desde el entorno de la historia clínica, especificamente desde la evolución de los pacientes. Cuando se genera una orden digital se va a crear un protocolo (entidad principal para la atención de laboratorio) [LAB_PROTOCOLO] el cual se encuentra asociado al paciente sobre el cual el médico está haciendo la evolución. Este protocolo se crea en base a:
 
-Paciente que se está evolcuionando.
+Paciente que se está evolucionando.
 
 El médico solicitante es el médico que genera la orden digital.
 
-La orden del protocolo es la que se compone de las determinaciones [LAB_NOMENCLADOR] que el médico selecciono al generar la orden digital.
+La orden del protocolo es la que se compone de las determinaciones [LAB_NOMENCLADOR] que el médico seleccionó al generar la orden digital.
 
-Al ingresar al modal para generar la orden digital, el médico primero ve todas las ordenes que se encuentran predefinidas para el mismo. Estos grupos [LAB_GRUPOESTUDIO] se crean seleccionando las determinaciones que se van a encontrar en la orden generada y relacionandolos a un médico mediante su matrícula provincial. Así es como le aparecen a cada médico los grupos asociados al mismo. La relación es mediante el usuario de HC (completar)
+Al ingresar al modal para generar la orden digital, el médico primero ve todas las órdenes que se encuentran predefinidas para el mismo. Estos grupos [LAB_GRUPOESTUDIO] se crean seleccionando las determinaciones que se van a encontrar en la orden generada y relacionandolos a un médico mediante su matrícula provincial. Así es como le aparecen a cada médico los grupos asociados al mismo. La relación es mediante el usuario de HC (completar)
 
 En base a los grupos anteriores, el médico puede seleccionar uno y avanzar hasta la generación de la orden, o modificarlo solamente para esa solicitud. Una modificación generada desde la labor del médico no genera una modificación permamente al grupo en cuestión.
 

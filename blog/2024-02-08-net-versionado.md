@@ -1,5 +1,5 @@
 ---
-slug: versionado net    
+slug: Versión NET 2024.02.08  
 title: Versión NET 2024.02.08
 authors: [gms]
 tags: [netapp, versionado]
