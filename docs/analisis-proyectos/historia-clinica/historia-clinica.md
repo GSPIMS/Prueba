@@ -1,6 +1,7 @@
 ---
 sidebar_label: 'Historia Clínica'
 ---
+Borrador
 
 # Historia Clínica
 
