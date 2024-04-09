@@ -8,6 +8,8 @@ sidebar_label: 'Toma de turnos'
 **Permitir al paciente tomar turnos de consultas, prácticas y laboratorio desde la terminal de autogestión, sin necesitar interacción con representantes que se encuentran en la recepciones de DIM. Aumentar el porcentaje de gente que usa las terminales.**
 :::
 
+**[Diseño en Figma](https://www.figma.com/file/Gw4e2HniVEaPVDvSWheE6q/Terminales-de-Autogesti%C3%B3n?type=design&node-id=3702-764&mode=design&t=hG5U5AIs8wUuq7YB-4)**
+
 ## Funcionalidad
 
 Se solicita ampliar la funcionalidad de las terminales para permitir que los pacientes tomen turnos desde las mismas, tomando en cuenta los parametros que actualmente se consideran para la toma de turnos desde el portal.
@@ -19,6 +21,13 @@ Para poder ingresar a esta opción, tenemos que solicitar la clave del portal de
 **Podemos usar un circuito para que genere la clave en ese momento pero va a llevar tiempo del paciente ahí y podemos tener demoras con el envió de mail**
 
 ## Circuito de toma de turno
+
+Al ingresar a la opción "Necesito turno" se va a realizar una validación de la identidad del paciente en 2 pasos. 
+
+1. Primero se va a mostrar la fecha de nacimiento del paciente que ingreso a la terminal junto con 2 registros de fechas de nacimiento que se randomicen (creación de fechas aleatorias). Las fechas adicionales se generán automáticamente contemplando la fecha real y no pasandose de un año antes o un año después de dicha fecha. Si el paciente selecciona fechas incorrectas 2 veces seguidas, se le va a pedir que se acerque a punto de control y aparte no se le va a pemitir acceder a la opción de toma de turnos por 24 horas.
+2. Adicionalmente se le va a solicitar al paciente que ingrese su DNI. Solo se va a avanzar a este paso si se selecciona la fecha correcta en el paso anterior en una de las 2 oportunidades. Esta comprobación no tiene limite. El paciente puede ingresar incorrectamente el DNI sin un limite de posibilidades.
+
+Una vez que el paciente cumpla con los 2 pasos de validación de identidad, se inicia el circuito de toma de
 
 El primer paso va a ser definir si se desea tomar un turno para:
 - Consulta: Mismos resultados que en el portal. En vez de mostrar un drop down, se pasa a un esquema de botones
