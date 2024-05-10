@@ -1,0 +1,1 @@
+Si en informes web se borra la proforma al momento de agregarla, revisar el traductor de google de Chrome. Esto genera un problema con el funcionamiento de las proformas.
