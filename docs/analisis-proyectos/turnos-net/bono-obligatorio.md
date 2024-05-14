@@ -18,7 +18,7 @@ Resumen de solución:
 
 Al momento de dar el presente desde cualquier pantalla que contenga dicha acción ("Atención paciente", "Agenda del día" o "Prestaciones") vamos a controlar si la Obra Social del turno sobre el que se dispara requiere de un bono de consulta. Si no requiere bono, se avanza normalmente corriendo el resto de las comprobaciones. Ante el caso de que se requiera bono, se va a verificar que exita un documento en el turno con categoría "Bono de consulta y Kinesiología". De encontrar un archivo bajo esa categoría se avanzará a la asignación del presente, dependiendo del resto de las comprobaciones. Si no se encuentra dicho archivo se agregará como motivo a mostrar al momento de recibir el error por el cual no se puede agregar el presente, indicando que falta dicho bono de consulta. REVISAR SI HAY LÓGICA PRA CLAVE DE SUPERVISOR
 
-Al recatalogar un documento asociado al turno usando la categoría "Bono de consulta y Kinesiología" se va a controlar si la Obra Social del turno requiere la firma del bono médico y de ser así se va a mostrar una ventana con un mensaje para reccordar al operador que debe estar la firma del paciente. El texto del mensaje será el que se ingrese en la parametrización de mensajes desde "Archivo > Textos Configuración". Esto es meramente informativo ya que no cuenta con lógica adicional. Al cerrar el mensaje el operador sigue operando el sistema normalmente
+Adicionalmente, en el proceso del presente se va a controlar si la Obra Social requiere firma del paciente en bono de consulta médica y de ser así se va a mostrar un mensaje para recordar al usuario que el bono debe estar firmado. El texto del mensaje será el que se ingrese en la parametrización de mensajes desde "Archivo > Textos Configuración". Esto es meramente informativo ya que no cuenta con lógica adicional. Al cerrar el mensaje el operador sigue operando el sistema normalmente
 
 El cierre de agenda mostrará un error adicional ante la existencia de turnos cuya Obra Social requiere bono de consulta obligatorio y no tengan un documento catalogado con el ID ya mencionado. Esta situación no debería de ocurrir debido a que no se podrá asignar un presente con un turno en estas condiciones pero servirá como un segundo nivel de control de los turnos que se encuentran en la agenda.
 
@@ -35,6 +35,16 @@ Ambos checkbox se van a encontrar en la pestaña de "Parámetros" junto con las 
 No se harán modificaciones del portal del turnos ni de aplicación o terminal de autogestión debido a que solamente se indicará que requieren bono obras sociales que no pueden pasar por terminal de autogestión. Este punto tenemos que reveerlo en el proyecto de redirección de pacientes, ya que se debe contemplar si la marca de que no son aptas de pasar por terminales es suficiente para el reenvío del paciente o si va a existir un comportamiento especifico para pancientes cuya obra social solicita bono de consulta médica obligatorio. 
 Tampoco será este documento parte del control de órdenes que se hace para prácticas.
 La categoría de documento va a seguir siendo la que existe hoy ya que no se deberían de chocar logícas de Kinesiología con lógicas de bono de consulta por su naturaleza de consulta médica.
+
+## Para Desarrollo
+
+A nivel de base de datos agregar a tabla OBRASOCIAL_PARAMETROS: (agregar detalles)
+- REQUIEREBONO: Para indicar cuando la Obra Social requiere bono de consulta médica.
+- REQUIEREBONOFIRMA: Para indicar cuando la Obra Social requiere firma en el bono de consulta.
+
+Lógica a agregar:
+En el metodo 'objTurno.AsignarPresente' tenemos que agregar un condicional al circuito de consultas médicas para comprobar si la Obra Social requiere bono de conosulta médica 
+
 
 
 
