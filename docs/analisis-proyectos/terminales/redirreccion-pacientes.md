@@ -8,7 +8,7 @@ sidebar_label: 'Redirección de pacientes'
 **Tomar el control de a donde se va a redirigir al paciente desde las terminales para que todos pasen por las mismas. Ya sea un puesto de recepción, una fila o un punto de atención.**
 :::
 
-Metodologías posibles para el reenvío de pacientes desde las terminales a recepción/punto de espera para atención:
+Metodologías posibles para el reenvío de pacientes desde las terminales a recepción o punto de espera para atención:
 
 - Envío a una única cola de atención en recepción (ejemplo actual: CME)
 Es el método más fácil porque mediante texto se le indica al paciente que debe hacer la fila como una única fila para la recepción indicada.
@@ -16,11 +16,16 @@ Es el método más fácil porque mediante texto se le indica al paciente que deb
 En este caso se tiene que poder definir un camino a seguir para una opción especifica, pudiendo crear los lugares de atención o las filas que se encuentran implementadas para que el paciente sepa a donde debe de ir.
 - Envío a un puesto especifico en la recepción predefinida o para otra recepción del mismo centro (Ejemplo actual: Punto de control)
 Para este caso, hacemos algo similar a lo que se plantea en el punto anterior. La diferencia es que se manda a un puesto de recepción y no a una cola. A nivel de configuración va a ser lo mismo (sin identificar el puesto).
-- Encolar en llamador según concepto por el cual debe pasar a la recepción (NO SE VA A CONTEMPLAR PARA DESARROLLO EN ESTA INSTANCIA)
 
-Hoy en día contamos con una tabla para el envío del paciente a la recepción para cuando debe ir a punto de control (PUNTOCONTROL). Mediante la lógica se identifica cual es el problema que deriva a punto de control y se completa la información que hace a esa redirección. Esto no permite parametrización para poder identificar a donde se va a dirigir el paciente. 
+Para resolver las 3 metodologías mencionadas dentro de un único circuito a contemplar es que vamos a trabajar en parametrización en base a la selección de:
+- un TIPO de redirección para poder identificar cual es el motivo de la redirección. Estos motivos son los únicos elementos que van a estar precargados y se van a tener que modificar a medida que se mejore el sistema y se generen nuevas situaciones de atención. Estos motivos se listan más abajo. 
+- un Centro donde se va a usar la redirección. Esto sirve para poder tener distintos comportamientos en cada centro según se necesite. 
+- un Mensaje preconfigurado que exista en la configuración de mensajes que tenemos en .net para tomar como mensaje a mostrar al paciente una vez que se produce la redirección.  
+- un Puesto/Fila hacia donde se va a redirigir al paciente. Estos puestos o filas se tienen que crear en la tabla puestos y se van a referenciar acá para saber a donde se redirige al paciente usando el texto que es la descripción del puesto.
 
-Otras tablas que se usan para manejar las definiciones de lo que se muestra al paciente en pantalla al terminar un circuito son (PUNTOCONTROLTIPO) y (PUNTOCONTROLTEXTO). La primera se usa para definir los motivos por los cuales se envía al paciente a punto de control y la segunda define el texto que se va a mostrar en la pantalla de la terminal al poder detectar por que motivo se está enviando al paciente hacía el punto de control. Mas adelante se detallan agregados que se tienen que hacer a estas tablas o mediante una nueva tabla auxiliar para lograr lo que necesitamos según esta solicitud. 
+El objetivo de manejar la parametrización de esta manera es poder hacer modificaciones en cualquier momento desde el uso del sistema, ya sea mediante el cambio de un texto, por cambios estructurales de una recepción, etc. Como se menciona arriba, lo único que depende del sector de Desarrollo es el listado de los potenciales motivos de redirección y cualquier modificación se va a tener que solicitar a dicho sector.
+
+Hoy en día contamos con una tabla para el envío del paciente a la recepción para cuando debe ir a punto de control (PUNTOCONTROL). Mediante la lógica se identifica cual es el problema que deriva a punto de control y se completa la información que hace a esa redirección. Esto no permite parametrización para poder identificar a donde se va a dirigir el paciente. Es por esto que deberíamos de modificar esta tabla para contemplar el ID del puesto que se va a usar como destino para la redirección. A su vez permitir ingresar una descripción al puesto para poder ingresar lo que va a aparecer en la terminal completando el mensaje de la redirección.
 
 Todas las redirecciones de los pacientes desde las terminales son:
 - A esperar ser atendido, identificando un consultorio médico (prácticas o consultas)
@@ -54,3 +59,8 @@ Desde el usuario, va a tener que poder crear registros que contengan:
 - Marca de punto de control: Es un campo booleano donde se indica si la redirección envía a punto de control o no. Esto es para poder identificar fácilmente si el reenvío es a punto de control.
 
 Para contener esta información podemos usar PUNTOCONTROLTIPO y PUNTOCONTROLTEXTO ampliando a los potenciales eventos en la primera y los textos en la segunda. Tenemos que agregar la data de la imagen y si es o no punto de control. La segunda tabla ya tiene campo para definir centro y recepción, para poder identificar que se va a mostrar en ese centro específicamente. 
+
+
+## Fuera del alcance
+
+- Opción de habilitar llamador en la recepción.
